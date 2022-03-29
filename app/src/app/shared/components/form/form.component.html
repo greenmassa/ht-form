@@ -23,13 +23,13 @@
       </div>
       <div class="form-control">
         <label>Кол-во ночей от</label>
-        <input type="number" min=5 max=15 formControlName="nights" (change)="changeDays()">
+        <input type="number" min=5 max=15 formControlName="nights" >
       </div>
       <div class="form-control">
         <label>Кол-во ночей до</label>
-        <input type="number" min=5 max=15 formControlName="nightsTo" (change)="changeDays()">
+        <input type="number" min=5 max=15 formControlName="nightsTo" >
       </div>
-      <button class="btn btn-search" type="submit"  (click)="submit()" [disabled]="form.invalid || !submitEnabled">
+      <button class="btn btn-search" type="submit"  (click)="submit()" [disabled]="form.invalid">
         Найти туры
       </button>
     </form>

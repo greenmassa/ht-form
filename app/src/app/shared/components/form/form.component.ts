@@ -32,7 +32,6 @@ export class FormComponent implements OnInit {
   country: string = '';
   date: Date = new Date();
   form: FormGroup;
-  submitEnabled: boolean = true;
   nights: number = 5;
   nightsTo: number = 15;
 
@@ -44,6 +43,12 @@ export class FormComponent implements OnInit {
       nights: new FormControl(5, [Validators.required, Validators.min(5)]),
       nightsTo: new FormControl(15, [Validators.required, Validators.max(15)]),
     });
+    this.form.get('nights')?.valueChanges.subscribe((responce) => {
+      this.form.get('nightsTo')?.setValidators(Validators.min(responce));
+    });
+    this.form.get('nightsTo')?.valueChanges.subscribe((responce) => {
+      this.form.get('nights')?.setValidators(Validators.max(responce));
+    });
   }
   checkCity($event: Event) {
     const inputValue = Number(($event.target as HTMLInputElement).value);
@@ -53,15 +58,6 @@ export class FormComponent implements OnInit {
     const item = this.countries[0];
     this.form.controls['country'].setValue(item.id);
     console.log($event);
-  }
-  changeDays() {
-    const nightsCheck = Number(this.form.controls['nights'].value);
-    const nightsToCheck = Number(this.form.controls['nightsTo'].value);
-    if (nightsCheck > nightsToCheck) {
-      this.submitEnabled = false;
-    } else {
-      this.submitEnabled = true;
-    }
   }
 
   submit() {
