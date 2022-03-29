@@ -1,49 +1,6 @@
 <div class="container">
-  <div class="search-field">
-
-    <h1>Поиск туров</h1>
-    <form class="tours" [formGroup]="form" (ngSubmit)="submit()">
-      <div class="form-control">
-        <label>Город вылета</label>
-        <select formControlName="departCity" (change)="checkCity($event)">
-          <option *ngFor="let city of cities" [value]="city.id">
-              {{ city.name }}
-          </option>
-        </select>
-      </div>
-
-      <div class="form-control">
-        <label>Страна</label>
-        <select formControlName="country" >
-          <option *ngFor="let country of countries" [value]="country.id">
-              {{ country.name }}
-          </option>
-        </select>
-      </div>
-      <div class="form-control">
-        <label>Дата вылета</label>
-        <input type="date" required formControlName="date">
-      </div>
-      <div class="form-control">
-        <label>Кол-во ночей от</label>
-        <input type="number" min=5 max=15 formControlName="nights" (change)="changeDays()">
-      </div>
-      <div class="form-control">
-        <label>Кол-во ночей до</label>
-        <input type="number" min=5 max=15 formControlName="nightsTo" (change)="changeDays()">
-      </div>
-      <button class="btn btn-search" type="submit"  (click)="submit()" [disabled]="form.invalid || !submitEnabled">
-        Найти туры
-      </button>
-    </form>
-  </div>
-  
-  <div class="tours-results" *ngIf="tours.tours">
-    <h3>Результаты запроса ({{departCity}} - {{country}}, {{date | date: "dd MMM YYYY"}}, {{nights}}-{{nightsTo}} дн. )</h3>
-    <div class="card" *ngFor="let tour of tours.tours ">
-      <p class="hotelName">{{tour.hotelName}}</p>
-      <p class="tourPrice" >цена: {{tour.price}} {{tour.currency}}</p>
-    </div>
-  </div>
-
+  <app-form> 
+  </app-form>
+  <app-results>
+  </app-results>
 </div>

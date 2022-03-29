@@ -1,0 +1,16 @@
+.card {
+    border: 1px solid #1c4d1c;
+    border-radius: 10px;
+    background: rgb(137, 226, 152);
+    max-width: 400px;
+    height: 75px;
+    padding: 15px;
+    margin-bottom: 10px;
+    .hotelName {
+        margin-bottom: 7px;
+        font-weight: 600;
+    }
+    .tourPrice {
+        color: rgb(255, 255, 255);
+    }
+}

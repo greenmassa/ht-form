@@ -1,0 +1,7 @@
+<div class="tours-results" *ngIf="tours.tours">
+    <h3>Результаты запроса ({{departCity}} - {{country}}, {{date | date: "dd MMM YYYY"}}, {{nights}}-{{nightsTo}} дн. )</h3>
+    <div class="card" *ngFor="let tour of tours.tours ">
+      <app-tour [tour]="tour">
+      </app-tour>
+    </div>
+</div>
