@@ -1,6 +1,8 @@
 <div class="container">
-  <app-form> 
+  <app-form
+  (onFetch) = "onResults($event)"
+  > 
   </app-form>
-  <app-results>
+  <app-results [results] = "results">
   </app-results>
 </div>

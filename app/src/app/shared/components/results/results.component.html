@@ -1,5 +1,5 @@
 <div class="tours-results" *ngIf="tours.tours">
-    <h3>Результаты запроса ({{departCity}} - {{country}}, {{date | date: "dd MMM YYYY"}}, {{nights}}-{{nightsTo}} дн. )</h3>
+    <h3 *ngIf="tours.query">Результаты запроса ({{tours.query.departCity}} - {{tours.query.country}}, {{tours.query.date | date: "dd MMM YYYY"}}, {{tours.query.nights}}-{{tours.query.nightsTo}} дн. )</h3>
     <div class="card" *ngFor="let tour of tours.tours ">
       <app-tour [tour]="tour">
       </app-tour>

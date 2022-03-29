@@ -1,6 +1,6 @@
 /* eslint-disable max-len, require-jsdoc */
 import {Component, OnInit} from '@angular/core';
-import {ToursfetchService} from './services/toursfetch.service';
+import {ToursRes} from './shared/interfaces';
 
 // eslint-disable-next-line new-cap
 @Component({
@@ -9,8 +9,11 @@ import {ToursfetchService} from './services/toursfetch.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private toursfetchService: ToursfetchService) {
-  } 
+  public results: ToursRes;
+  onResults(event: ToursRes) {
+    console.log('onResults event', event);
+    this.results = event;
+  }
   ngOnInit(): void {
   }
 }

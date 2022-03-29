@@ -1,6 +1,7 @@
 /* eslint-disable require-jsdoc */
 import {HttpParams} from '@angular/common/http';
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+// eslint-disable-next-line max-len
+import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ToursfetchService} from 'src/app/services/toursfetch.service';
 import {Country} from '../../interfaces';
@@ -12,6 +13,8 @@ import {Country} from '../../interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent implements OnInit {
+  // eslint-disable-next-line new-cap
+  @Output() onFetch = new EventEmitter<any>();
   constructor(private toursfetchService: ToursfetchService) {
   }
   countryList = [
@@ -67,7 +70,13 @@ export class FormComponent implements OnInit {
       // eslint-disable-next-line max-len
       this.departCity = this.cities.filter((c) => c.id == this.form.controls['departCity'].value)[0].name;
       console.log('depCity', this.departCity);
-
+      const query = {
+        departCity: this.departCity,
+        country: this.country,
+        date: this.date,
+        nights: this.nights,
+        nightsTo: this.nightsTo,
+      };
       // eslint-disable-next-line max-len
       this.country = this.countryList.filter((c)=>c.id == this.form.controls['country'].value)[0].name;
       this.date = this.form.controls['date'].value;
@@ -82,7 +91,12 @@ export class FormComponent implements OnInit {
           .append('nights', this.form.controls['nights'].value)
           .append('nightsTo', this.form.controls['nightsTo'].value);
       // eslint-disable-next-line new-cap
-      this.toursfetchService.fetch(queryParams);
+      // eslint-disable-next-line max-len
+      this.toursfetchService.fetch(queryParams).subscribe((next: any) => {
+        next.query = query;
+        console.log('next', next);
+        this.onFetch.emit(next);
+      });
     }
   }
 }
