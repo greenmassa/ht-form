@@ -1,6 +1,6 @@
-<div class="tours-results" *ngIf="tours.tours">
-    <h3 *ngIf="tours.query">Результаты запроса ({{tours.query.departCity}} - {{tours.query.country}}, {{tours.query.date | date: "dd MMM YYYY"}}, {{tours.query.nights}}-{{tours.query.nightsTo}} дн. )</h3>
-    <div class="card" *ngFor="let tour of tours.tours ">
+<div class="tours-results" *ngIf="results.next.tours">
+    <h3 *ngIf="results.query">Результаты запроса ({{results.query.departCity}} - {{results.query.country}}, {{results.query.date | date: "dd MMM YYYY"}}, {{results.query.nights}}-{{results.query.nightsTo}} дн. )</h3>
+    <div class="card" *ngFor="let tour of results.next.tours">
       <app-tour [tour]="tour">
       </app-tour>
     </div>

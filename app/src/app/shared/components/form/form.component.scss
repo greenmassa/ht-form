@@ -1,3 +1,12 @@
+@media screen and (max-width: 1200px) {
+    .tours {
+        flex-wrap: wrap;
+    }
+    .btn-search {
+        min-width: 100px;
+        max-height: 100px;
+    }
+}
 .search-field {
     text-align: center;
     h1 {

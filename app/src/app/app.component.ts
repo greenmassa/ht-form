@@ -1,21 +1,19 @@
-/* eslint-disable max-len, require-jsdoc */
-import {Component, OnInit} from '@angular/core';
-import {ToursRes} from './shared/interfaces';
+import { Component, OnInit } from '@angular/core';
+import { Query, Tours } from './shared/interfaces';
 
-// eslint-disable-next-line new-cap
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  public results: ToursRes;
-  onResults(event: ToursRes) {
+export default class AppComponent implements OnInit {
+  public results: {next: Tours, query: Query};
+
+  onResults(event: {next: Tours, query: Query}) {
     console.log('onResults event', event);
     this.results = event;
   }
+
   ngOnInit(): void {
   }
 }
-
-

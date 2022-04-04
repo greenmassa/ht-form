@@ -1,21 +1,20 @@
-import {LOCALE_ID, NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
-import {registerLocaleData} from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
-import {TourComponent} from './shared/components/tour/tour.component';
-import {FormComponent} from './shared/components/form/form.component';
-import {ToursfetchService} from './services/toursfetch.service';
-import { ResultsComponent } from './shared/components/results/results.component';
+import { HttpClientModule } from '@angular/common/http';
+import AppRoutingModule from './app-routing.module';
+import AppComponent from './app.component';
+import TourComponent from './shared/components/tour/tour.component';
+import FormComponent from './shared/components/form/form.component';
+import ToursFetchService from './services/tours-fetch.service';
+import ResultsComponent from './shared/components/results/results.component';
 
 registerLocaleData(localeRu, 'ru');
 
-// eslint-disable-next-line new-cap
 @NgModule({
-  declarations: [
+  declarations:[
     AppComponent,
     TourComponent,
     FormComponent,
@@ -29,11 +28,10 @@ registerLocaleData(localeRu, 'ru');
     HttpClientModule,
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'ru'},
-    ToursfetchService,
+    { provide: LOCALE_ID, useValue: 'ru' },
+    ToursFetchService,
   ],
   bootstrap: [AppComponent],
 })
-// eslint-disable-next-line require-jsdoc
-export class AppModule {
+export default class AppModule {
 }

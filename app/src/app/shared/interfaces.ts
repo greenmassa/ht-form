@@ -7,12 +7,19 @@ export interface Country {
     id: number,
     name: string,
 }
-export interface ToursRes {
-    tours: Tour[],
-    query:
-      {departCity: string | '',
-       country: string | '',
-       date: Date | undefined,
-       nights: string,
-       nightsTo: string}
+export interface Tours {
+    tours?: Tour[]
+}
+export interface ToursWithQuery {
+    tours?: Tour[],
+    query: {
+        departCity: string
+    }
+}
+export interface Query {
+    departCity: string,
+    country: string,
+    date: Date,
+    nights: number,
+    nightsTo: number
 }
